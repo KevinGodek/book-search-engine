@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/react-hooks';
 
 import { addNewUser } from '../utils/mutations';
-import auth from '../utils/auth';
+import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
@@ -38,7 +38,7 @@ const SignupForm = () => {
 
       //if (!response.ok) {
       //  throw new Error('something went wrong!');
-        Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
         console.error(e);
       };

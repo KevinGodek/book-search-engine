@@ -43,7 +43,7 @@ export const storeBook = gql`
     }
 `;
 
-export const removeBook = gql`
+export const delete_book = gql`
     mutation removeBook($bookId: String!) {
         removeBook(bookId:$bookId) {
             _id

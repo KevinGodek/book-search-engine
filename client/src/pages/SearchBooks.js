@@ -3,7 +3,7 @@ import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'reac
 import { useMutation } from '@apollo/react-hooks';
 
 import Auth from '../utils/auth';
-import { storeBook } from '../utils/API';
+import { storeBook } from '../utils/mutations';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
@@ -81,7 +81,7 @@ const SearchBooks = () => {
       });
 
       // if book successfully saves to user's account, save book id to state
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      setSavedBookIds([...savedBookIds, book.bookId]);
     } catch (err) {
       console.error(err);
     }
