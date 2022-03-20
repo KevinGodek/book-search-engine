@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const getUser = gql`
+const GET_ME = gql`
     {
         me {
             _id
@@ -19,4 +19,4 @@ const getUser = gql`
     }
 `;
 
-export default getUser;
+export default GET_ME;

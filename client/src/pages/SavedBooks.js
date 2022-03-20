@@ -5,13 +5,13 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 
 //import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
-import getUser from '../utils/queries';
-import { delete_book } from '../utils/mutations'
+import GET_ME from '../utils/queries';
+import { REMOVE_BOOK } from '../utils/mutations'
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-    const { loading, data } = useQuery(getUser);
-    const [ deleteBook ] = useMutation(delete_book)
+    const { loading, data } = useQuery(GET_ME);
+    const [ deleteBook ] = useMutation(REMOVE_BOOK)
     const user = data?.me || {};
 
   // use this to determine if `useEffect()` hook needs to run again
@@ -32,7 +32,6 @@ const SavedBooks = () => {
     // accepts bookID and delete book from database
     const handleDeleteBook = async (bookId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
           return false;
         }
@@ -44,7 +43,7 @@ const SavedBooks = () => {
         // }
 
         try {
-          // use delete_book mutation
+          // use REMOVE_BOOK mutation
           await deleteBook({
             variable: { bookId }
           });
