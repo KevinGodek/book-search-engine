@@ -12,6 +12,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware
+  // introspection: true
 });
 
 server.applyMiddleware({ app });
@@ -33,6 +34,6 @@ app.get ('*', (req, res) => {
 db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`🌍 Now listening on localhost:${PORT}`);
-    console.log('Use Graphql at http://localhost:${PORT}${server.graphqlPath}');
+    console.log(`Use Graphql at http://localhost:${PORT}${server.graphqlPath}`)
   });
 });
